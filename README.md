@@ -79,7 +79,7 @@ Next, when you're import `proj.data`,
 Things become quite useful when you're loading DSLs(domain specific languages),
 or other programming languages that compile to the Python bytecode.
 
-For example, we give an implementation of loading the script of [muridesu](https://github.com/LanguageAsGarbage/muridesu-lang) language.
+For example, we give an implementation of loading the script of [muridesu](https://github.com/LanguageAsGarbage/muridesu-lang) language(Python 3.7 only).
 
 Check `test/zenzen_muridesu.py`, note that if you're using an IDE,
 you will have a good experience of auto completion and static checking
