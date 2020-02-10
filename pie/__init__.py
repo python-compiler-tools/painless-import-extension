@@ -21,6 +21,10 @@ def source_hash(x):
 __all__ = ['Header', 'DefaultHeader', 'LoaderForBetterLife']
 
 
+class CacheValueError(ValueError):
+    pass
+
+
 class Header(ABC):
     """The header of code object representing the module to load
     This can be used for verifying the compiled code, or querying if
@@ -77,22 +81,22 @@ class DefaultHeader(Header):
     def from_cache(cls, compiled_cache: bytes) -> Header:
         i = compiled_cache.find(b'\n')
         if i == -1:
-            raise ValueError
+            raise CacheValueError
         n = int(compiled_cache[:i])
         hash = compiled_cache[i + 1:i + 1 + n]
-        header = DefaultHeader(hash)
+        header = cls(hash)
         return header
 
     @classmethod
     def from_source(cls, src_code: bytes) -> Header:
         hash = source_hash(src_code)
-        return DefaultHeader(hash)
+        return cls(hash)
 
     @classmethod
     def remove_header(cls, compiled_cache: bytes) -> bytes:
         i = compiled_cache.find(b'\n')
         if i == -1:
-            raise ValueError
+            raise CacheValueError
         n = int(compiled_cache[:i])
         b = compiled_cache[i + 1 + n:]
         return b
@@ -158,11 +162,12 @@ class LoaderForBetterLife(Generic[T]):
                 if cache:
                     # verify cache
                     header, program = cache
+
                     if not header.is_out_of_date(src):
                         need_recompile = False
 
                 if need_recompile:
-                    header = self.header_cls().from_source(source_hash(src))
+                    header = self.header_cls().from_source(src)
                     program = self.source_to_prog(src, src_file)
                     with cache_file.open('wb') as f:
                         contents = self.dump_program(program)
@@ -181,6 +186,5 @@ class LoaderForBetterLife(Generic[T]):
     def load(self):
         return self.load_header_and_prog()[1]
 
-    @classmethod
-    def header_cls(cls) -> Type[Header]:
+    def header_cls(_) -> Type[Header]:
         return DefaultHeader

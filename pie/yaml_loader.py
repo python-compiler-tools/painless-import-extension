@@ -12,7 +12,7 @@ class YamlLoader(LoaderForBetterLife[dict]):
         return pickle.dumps(prog)
 
     def source_to_prog(self, src: bytes, path: Path) -> dict:
-        return yaml.load(src)
+        return yaml.load(src, yaml.SafeLoader)
 
     def suffix(self):
         return '.yml', '.yaml'
