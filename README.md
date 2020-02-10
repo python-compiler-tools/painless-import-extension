@@ -77,7 +77,7 @@ Next, when you're import `proj.data`,
       binary contents.
 
 Things become quite useful when you're loading DSLs(domain specific languages),
-or other programming languages that compile to the Python bytecode.
+or other programming languages that compile to the Python.
 
 For example, we give an implementation of loading the script of [muridesu](https://github.com/LanguageAsGarbage/muridesu-lang) language(Python 3.7 only).
 
@@ -146,3 +146,10 @@ dogy
 <class '__main__.Animal'>
 hoho
 ```
+
+### Conclusion
+
+Make sure if you really want to introduce the complexity of `importlib`?
+
+When you just need searching extension files just as searching normal python files,
+use PIE.
