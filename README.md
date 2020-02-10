@@ -12,7 +12,7 @@ and finally, likely to bring about the crash of one's faith in writing reliable 
 
 I for one encountered this, and fortunately I didn't jump down from my dormitory after working with that for months(and knew it for years).
 
-Hence, I released it should be my duty to keep people away from being killed when working with Python's module finding mechanism,
+Hence, I realized that it should be my duty to keep people away from being killed when working with Python's module finding mechanism,
 which might save several people's lives.
 
 
