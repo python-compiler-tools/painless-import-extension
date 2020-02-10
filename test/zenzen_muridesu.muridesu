@@ -1,0 +1,19 @@
+
+class Animal {
+    func bark(self){
+        print("hoho")
+    }
+}
+
+class Dog <: Animal {
+    bark = fn (self) -> {
+        print("dogy")
+    }
+}
+
+list(map(fn (it) -> {
+    print(it.__class__)
+    it.bark()
+    },
+    [Dog(), Animal()]
+))
