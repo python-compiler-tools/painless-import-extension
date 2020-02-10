@@ -13,6 +13,7 @@ install:
 
 script:
   - coverage run --m tests
+  - coverage run -a --m tests
   # exclude bootstrap for ast transformations cannot be detected by coverage, causing incorrect report.
   - coverage report
 
