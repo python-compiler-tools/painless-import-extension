@@ -1,9 +1,21 @@
 # this file is for CI only.
 from sys import version_info
 try:
-    from pip import main
+    from pip._internal.main import main
+    if not callable(main):
+        raise ImportError
+
 except ImportError:
-    from pip._internal import main
+    try:
+        from pip._internal import main
+        if not callable(main):
+            raise ImportError
+
+    except ImportError:
+        from pip import main
+
+        if not callable(main):
+            raise ImportError
 
 requires = []
 if (3, 4) <= version_info < (3, 5):
