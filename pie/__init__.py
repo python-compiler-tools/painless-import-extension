@@ -4,13 +4,14 @@ from pathlib import Path
 from importlib.util import cache_from_source
 from importlib.util import MAGIC_NUMBER
 import hmac
+import hashlib
 __all__ = ['Header', 'DefaultHeader', 'LoaderForBetterLife']
 
 T = TypeVar('T')
 
 
 def source_hash(x):
-    return hmac.new(MAGIC_NUMBER, x).digest()
+    return hmac.new(MAGIC_NUMBER, x, hashlib.md5).digest()
 
 
 class CacheValueError(ValueError):
@@ -135,7 +136,7 @@ class LoaderForBetterLife(Generic[T]):
         for suffix in suffixes:
             src_file = self.file.with_suffix(suffix)
             cache_file = Path(cache_from_source(
-                src_file.absolute())).with_suffix('.pie.pyc')
+                src_file.absolute())).with_suffix('.pie').joinpath('.pyc')
             cache_file.parent.mkdir(exist_ok=True, parents=True)
             cache = None
             if cache_file.exists():
