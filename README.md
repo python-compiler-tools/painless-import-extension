@@ -1,5 +1,10 @@
 ## PIE
 
+[![PyPI version](https://img.shields.io/pypi/v/painless-import-extension.svg)](https://pypi.org/project/painless-import-extension)
+[![Build Status](https://travis-ci.com/thautwarm/PIE.svg?branch=master)](https://travis-ci.com/thautwarm/PIE)
+[![codecov](https://codecov.io/gh/thautwarm/PIE/branch/master/graph/badge.svg)](https://codecov.io/gh/thautwarm/PIE)
+[![MIT License](https://img.shields.io/badge/license-MIT-Green.svg?style=flat)](https://github.com/thautwarm/EBNFParser/blob/boating-new/LICENSE)
+
 ### Motivation
 
 Fuck it, I must say something at first.
