@@ -135,8 +135,8 @@ class LoaderForBetterLife(Generic[T]):
         suffixes = suffix if isinstance(suffix, tuple) else (suffix, )
         for suffix in suffixes:
             src_file = self.file.with_suffix(suffix)
-            cache_file = Path(cache_from_source(
-                src_file.absolute())).with_suffix('.pie').joinpath('.pyc')
+            cache_file_path = cache_from_source(str(src_file.absolute()))
+            cache_file = Path(cache_file_path).with_suffix('.pie.pyc')
             cache_file.parent.mkdir(exist_ok=True, parents=True)
             cache = None
             if cache_file.exists():
