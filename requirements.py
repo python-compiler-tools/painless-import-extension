@@ -1,3 +1,4 @@
+# this file is for CI only.
 from sys import version_info
 try:
     from pip import main
