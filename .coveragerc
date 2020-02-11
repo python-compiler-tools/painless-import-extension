@@ -6,3 +6,4 @@ exclude_lines =
 
 [run]
 omit = /home/travis/virtualenv/*
+       tests/*
