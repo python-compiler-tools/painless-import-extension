@@ -4,15 +4,13 @@ from pathlib import Path
 from importlib.util import cache_from_source
 from importlib.util import MAGIC_NUMBER
 import hmac
+__all__ = ['Header', 'DefaultHeader', 'LoaderForBetterLife']
 
 T = TypeVar('T')
 
 
 def source_hash(x):
     return hmac.new(MAGIC_NUMBER, x).digest()
-
-
-__all__ = ['Header', 'DefaultHeader', 'LoaderForBetterLife']
 
 
 class CacheValueError(ValueError):
