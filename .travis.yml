@@ -8,6 +8,7 @@ python:
   - "3.8-dev"
 
 install:
+  - python requirements.py
   - pip install codecov coveralls
   - python setup.py install
 
