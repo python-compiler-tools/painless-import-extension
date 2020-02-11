@@ -4,7 +4,7 @@ from pathlib import Path
 with Path('README.md').open() as readme:
     readme = readme.read()
 
-version = 0.1
+version = "0.2.1"
 
 setup(
     name='painless-import-extension',
@@ -15,10 +15,10 @@ setup(
     long_description_content_type="text/markdown",
     license='mit',
     python_requires='>=3',
-    url='https://github.com/thautawarm/PIE',
-    author='thautawarm',
+    url='https://github.com/thautwarm/painless-import-extension',
+    author='thautwarm',
     author_email='twshere@outlook.com',
-    packages=find_packages(where='./pie'),
+    packages=find_packages(),
     entry_points={"console_scripts": []},
     install_requires=[],
     platforms="any",
