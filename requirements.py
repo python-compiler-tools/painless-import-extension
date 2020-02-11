@@ -1,5 +1,7 @@
 # this file is for CI only.
 from sys import version_info
+
+# https://github.com/pypa/pip/issues/7498
 try:
     from pip._internal.main import main
     if not callable(main):
