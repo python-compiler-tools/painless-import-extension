@@ -1,21 +1,15 @@
 from abc import ABC, abstractmethod
-from sys import version_info, version
 from typing import Type, Generic, TypeVar, Tuple, Union
 from pathlib import Path
 from importlib.util import cache_from_source
 from importlib.util import MAGIC_NUMBER
-MAGIC_NUMBER = int.from_bytes(MAGIC_NUMBER, 'little')
-
-if version_info <= (3, 8):
-    from _imp import source_hash as _source_hash
-else:
-    raise NotImplementedError('Not implemented for {}'.format(version))
+import hmac
 
 T = TypeVar('T')
 
 
 def source_hash(x):
-    return _source_hash(MAGIC_NUMBER, x)
+    return hmac.new(MAGIC_NUMBER, x).digest()
 
 
 __all__ = ['Header', 'DefaultHeader', 'LoaderForBetterLife']
