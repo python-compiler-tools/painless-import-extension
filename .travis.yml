@@ -8,7 +8,7 @@ python:
   - "3.8-dev"
 
 install:
-  - pip install codecov coverage pytest==3.3.2
+  - pip install codecov coveralls
   - python setup.py install
 
 script:
@@ -19,3 +19,4 @@ script:
 
 after_success:
   - codecov
+  - coveralls
