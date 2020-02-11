@@ -1,6 +1,5 @@
 language: python
 python:
-  - "3.4"
   - "3.5"
   - "3.6"
   - "3.7"
@@ -9,6 +8,7 @@ python:
 
 install:
   - python requirements.py
+  - pip install -U pip
   - pip install codecov coveralls
   - python setup.py install
 
