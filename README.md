@@ -5,6 +5,28 @@
 [![codecov](https://codecov.io/gh/thautwarm/PIE/branch/master/graph/badge.svg)](https://codecov.io/gh/thautwarm/PIE)
 [![MIT License](https://img.shields.io/badge/license-MIT-Green.svg?style=flat)](https://github.com/thautwarm/EBNFParser/blob/boating-new/LICENSE)
 
+
+## Installation & Documentation
+
+`pip install painless-import-extension`.
+
+Basically there's only one thing exported from package `pie`:
+
+```python
+from pie import LoaderForBetterLife
+```
+
+It's an abstract generic type. When you want to load a file to type `A`,
+write such a loader:
+
+```python
+class ALoader(LoaderForBetterLife[A]):
+    pass
+```
+
+**IDEs and static type checkers will help you to finish the following steps of implementing your expecting loader, and this is what I'd call a documentation here.**
+
+
 ### Motivation
 
 Fuck it, I must say something at first.
